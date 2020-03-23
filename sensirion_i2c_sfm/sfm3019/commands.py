@@ -161,7 +161,7 @@ class Sfm3019I2cCmdReadMeas(Sfm3019I2cCmdBase):
 
 class Sfm3019I2cCmdStopMeas(Sfm3019I2cCmdBase):
     """
-    SFM3019 I²C command "Measure Air/O2 with Volume fraction of O2 (in ‰)"
+    SFM3019 I²C command "Stop continuous measurements"
     """
     def __init__(self):
         """

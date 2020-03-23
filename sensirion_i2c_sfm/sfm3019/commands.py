@@ -61,13 +61,13 @@ class Sfm3019I2cCmdReadProductIdentifierAndSerialNumber(Sfm3019I2cCmdBase):
         """
         Constructs a new command.
         """
-        super(Sfm3019I2cCmdReadProductIdentifierAndSerialNumber, self).__init__(
-            command=0xE102,
-            tx_words=[],
-            rx_length=18,
-            read_delay=0,
-            timeout=0,
-        )
+        super(Sfm3019I2cCmdReadProductIdentifierAndSerialNumber,
+              self).__init__(command=0xE102,
+                             tx_words=[],
+                             rx_length=18,
+                             read_delay=0,
+                             timeout=0,
+                             )
 
     def interpret_response(self, data):
         words = Sfm3019I2cCmdBase.interpret_response(self, data)
@@ -178,7 +178,8 @@ class Sfm3019I2cCmdStopMeas(Sfm3019I2cCmdBase):
 
 class Sfm3019I2cCmdGetUnitAndFactors(Sfm3019I2cCmdBase):
     """
-    SFM3019 I²C command "Get the currently set scale factor and unit for the defined measurement mode"
+    SFM3019 I²C command "Get the currently set scale factor and unit for the
+    defined measurement mode"
     """
     def __init__(self, measure_cmd):
         """

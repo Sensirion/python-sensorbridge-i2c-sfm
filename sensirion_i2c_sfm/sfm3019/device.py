@@ -53,11 +53,14 @@ class Sfm3019I2cSensorBridgeDevice:
             In single-channel mode, an exception is raised in case of
             communication errors.
         """
+        address = self._slave_address
+        rx_length = command.rx_length
+        timeout_us = command.timeout * 1e6
         response = self._sensor_bridge.transceive_i2c(self._sensor_bridge_port,
-                                                      address=self._slave_address,
+                                                      address=address,
                                                       tx_data=command.tx_data,
-                                                      rx_length=command.rx_length,
-                                                      timeout_us=command.timeout * 1e6,
+                                                      rx_length=rx_length,
+                                                      timeout_us=timeout_us,
                                                       )
         return command.interpret_response(response)
 
@@ -73,14 +76,18 @@ class Sfm3019I2cSensorBridgeDevice:
         :rtype:
             triple
         """
-        return self._execute(Sfm3019I2cCmdGetUnitAndFactors(self.MeasurementCmds[measure_mode].COMMAND))
+        return self._execute(Sfm3019I2cCmdGetUnitAndFactors(
+            self.MeasurementCmds[measure_mode].COMMAND))
 
     def _convert_measurement_data(self, params):
-        return (float(params[0]) - self._flow_offset) / self._flow_scale_factor, float(params[1] / 200.)
+        """Apply offset and scaling to measurement data"""
+        return ((float(params[0]) - self._flow_offset) /
+                self._flow_scale_factor, float(params[1] / 200.))
 
     def initialize_sensor(self, measure_mode):
         self.stop_continuous_measurement()
-        self._flow_scale_factor, self._flow_offset, self._flow_unit = self._get_factors_and_unit(measure_mode)
+        self._flow_scale_factor, self._flow_offset, self._flow_unit = \
+            self._get_factors_and_unit(measure_mode)
 
     def read_product_identifier_and_serial_number(self):
         """
@@ -92,7 +99,8 @@ class Sfm3019I2cSensorBridgeDevice:
         :rtype:
             tuple
         """
-        hex_res = self._execute(Sfm3019I2cCmdReadProductIdentifierAndSerialNumber())
+        hex_res = self._execute(
+                Sfm3019I2cCmdReadProductIdentifierAndSerialNumber())
         return hex_res[0:4], hex_res[4:]
 
     def start_continuous_measurement(self, measure_mode=MeasurementMode.Air,
@@ -130,4 +138,5 @@ class Sfm3019I2cSensorBridgeDevice:
         :rtype:
             tuple
         """
-        return self._convert_measurement_data(self._execute(Sfm3019I2cCmdReadMeas()))
+        return self._convert_measurement_data(
+                self._execute(Sfm3019I2cCmdReadMeas()))

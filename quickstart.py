@@ -3,9 +3,10 @@ import time
 
 from sensirion_shdlc_driver import ShdlcSerialPort, ShdlcConnection
 from sensirion_shdlc_sensorbridge import SensorBridgePort, \
-    SensorBridgeShdlcDevice
+        SensorBridgeShdlcDevice
 
-from sensirion_i2c_sfm.sfm3019 import Sfm3019I2cSensorBridgeDevice, MeasurementMode
+from sensirion_i2c_sfm.sfm3019 import Sfm3019I2cSensorBridgeDevice, \
+        MeasurementMode
 
 logging.basicConfig(format='%(asctime)s [%(levelname)s] %(message)s',
                     level=logging.ERROR)
@@ -40,8 +41,10 @@ with ShdlcSerialPort(port='/dev/ttyUSB0', baudrate=460800) as port:
     print("SFM3019 SN: {}".format(pid_sn[1]))
 
     # Measure
-    sfm3019.start_continuous_measurement(measure_mode, air_o2_mix_fraction_permille=permille)
+    sfm3019.start_continuous_measurement(measure_mode,
+                                         air_o2_mix_fraction_permille=permille)
 
     while True:
         time.sleep(0.1)
-        print("Flow: {}, Temperature: {}".format(*sfm3019.read_continuous_measurement()))
+        print("Flow: {}, Temperature: {}"
+              .format(*sfm3019.read_continuous_measurement()))

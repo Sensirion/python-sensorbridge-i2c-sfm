@@ -2,6 +2,9 @@
 # (c) Copyright 2020 Sensirion AG, Switzerland
 
 from __future__ import absolute_import, division, print_function
+
+import numpy as np
+
 from sensirion_i2c_sfm.sensirion_word_command import SensirionWordI2cCommand
 from sensirion_i2c_sfm.crc_calculator import CrcCalculator
 
@@ -63,19 +66,22 @@ class Sfm3019I2cCmdReadProductIdentifierAndSerialNumber(Sfm3019I2cCmdBase):
 
     def interpret_response(self, data):
         words = Sfm3019I2cCmdBase.interpret_response(self, data)
-        return ''.join(['{:04X}'.format(words[i]) for i in words])
+        return ''.join(['{:04X}'.format(i) for i in words])
 
 
 class Sfm3019I2cCmdStartMeasO2(Sfm3019I2cCmdBase):
     """
     SFM3019 I²C command "Start continous Measurement of O2"
     """
+
+    COMMAND = 0x3603
+
     def __init__(self):
         """
         Constructs a new command.
         """
         super(Sfm3019I2cCmdStartMeasO2, self).__init__(
-            command=0x3603,
+            command=self.COMMAND,
             tx_words=[],
             rx_length=0,
             read_delay=0.012,
@@ -87,12 +93,15 @@ class Sfm3019I2cCmdStartMeasAir(Sfm3019I2cCmdBase):
     """
     SFM3019 I²C command "Start continous Measurement of Air"
     """
+
+    COMMAND = 0x3603
+
     def __init__(self):
         """
         Constructs a new command.
         """
-        super(Sfm3019I2cCmdStartMeasO2, self).__init__(
-            command=0x3608,
+        super(Sfm3019I2cCmdStartMeasAir, self).__init__(
+            command=self.COMMAND,
             tx_words=[],
             rx_length=0,
             read_delay=0.012,
@@ -102,9 +111,12 @@ class Sfm3019I2cCmdStartMeasAir(Sfm3019I2cCmdBase):
 
 class Sfm3019I2cCmdStartMeasAirO2Mix(Sfm3019I2cCmdBase):
     """
-    SFM3019 I²C command "Start continous Measurement of Air/O2 with Volume
+    SFM3019 I²C command "Start continuous Measurement of Air/O2 with Volume
     fraction of O2 (in ‰)"
     """
+
+    COMMAND = 0x3632
+
     def __init__(self, o2_volume_fraction_in_permille):
         """
         Constructs a new command.
@@ -112,8 +124,8 @@ class Sfm3019I2cCmdStartMeasAirO2Mix(Sfm3019I2cCmdBase):
         if not (0 <= o2_volume_fraction_in_permille <= 1000):
             raise ValueError("O2 volume fraction not in valid range 0-1000")
 
-        super(Sfm3019I2cCmdStartMeasO2, self).__init__(
-            command=0x3632,
+        super(Sfm3019I2cCmdStartMeasAirO2Mix, self).__init__(
+            command=self.COMMAND,
             tx_words=[o2_volume_fraction_in_permille],
             rx_length=0,
             read_delay=0.012,
@@ -132,10 +144,14 @@ class Sfm3019I2cCmdReadMeas(Sfm3019I2cCmdBase):
         super(Sfm3019I2cCmdReadMeas, self).__init__(
             command=None,
             tx_words=[],
-            rx_length=4,
+            rx_length=6,
             read_delay=0,
             timeout=0,
         )
+
+    def interpret_response(self, data):
+        words = Sfm3019I2cCmdBase.interpret_response(self, data)
+        return np.int16(words[0]), np.int16(words[1])
 
 
 class Sfm3019I2cCmdStopMeas(Sfm3019I2cCmdBase):
@@ -153,3 +169,24 @@ class Sfm3019I2cCmdStopMeas(Sfm3019I2cCmdBase):
             read_delay=0.0005,
             timeout=0,
         )
+
+
+class Sfm3019I2cCmdGetUnitAndFactorsForMeasurementType(Sfm3019I2cCmdBase):
+    """
+    SFM3019 I²C command "Get the current set scale factor and unit according to the actual measurement mode"
+    """
+    def __init__(self, measure_command):
+        """
+        Constructs a new command.
+        """
+        super(Sfm3019I2cCmdGetUnitAndFactorsForMeasurementType, self).__init__(
+            command=0x3661,
+            tx_words=[measure_command],
+            rx_length=9,
+            read_delay=0.0005,
+            timeout=0,
+        )
+
+    def interpret_response(self, data):
+        words = Sfm3019I2cCmdBase.interpret_response(self, data)
+        return float(np.int16(words[0])), float(np.int16(words[1])), np.int16(words[2])

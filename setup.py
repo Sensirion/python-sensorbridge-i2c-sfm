@@ -40,7 +40,7 @@ setup(
     ],
     install_requires=[
         'enum34;python_version<"3.4"',
-        'sensirion-shdlc-sensorbridge~=0.1.2',
+        'sensirion-shdlc-sensorbridge~=0.1.1',
     ],
     extras_require={
         'test': [

@@ -3,10 +3,15 @@
 
 from __future__ import absolute_import, division, print_function
 
-import numpy as np
-
 from sensirion_i2c_sfm.sensirion_word_command import SensirionWordI2cCommand
 from sensirion_i2c_sfm.crc_calculator import CrcCalculator
+
+
+def int16(word):
+    assert 0 <= word <= 0xFFFF, "Not an unsigned 16b word"
+    if word and 0x8000:
+        return word - 0x10000
+    return word
 
 
 class Sfm3019I2cCmdBase(SensirionWordI2cCommand):
@@ -151,7 +156,7 @@ class Sfm3019I2cCmdReadMeas(Sfm3019I2cCmdBase):
 
     def interpret_response(self, data):
         words = Sfm3019I2cCmdBase.interpret_response(self, data)
-        return np.int16(words[0]), np.int16(words[1])
+        return int16(words[0]), int16(words[1])
 
 
 class Sfm3019I2cCmdStopMeas(Sfm3019I2cCmdBase):
@@ -189,4 +194,4 @@ class Sfm3019I2cCmdGetUnitAndFactorsForMeasurementType(Sfm3019I2cCmdBase):
 
     def interpret_response(self, data):
         words = Sfm3019I2cCmdBase.interpret_response(self, data)
-        return float(np.int16(words[0])), float(np.int16(words[1])), np.int16(words[2])
+        return float(int16(words[0])), float(int16(words[1])), int16(words[2])

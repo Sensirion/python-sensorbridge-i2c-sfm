@@ -5,7 +5,7 @@ from sensirion_shdlc_driver import ShdlcSerialPort, ShdlcConnection
 from sensirion_shdlc_sensorbridge import SensorBridgePort, \
     SensorBridgeShdlcDevice
 
-from sensirion_i2c_sfm.sfm3019 import Sfm3019I2cSensorBridgeDevice
+from sensirion_i2c_sfm.sfm3019 import Sfm3019I2cSensorBridgeDevice, MeasurementMode
 
 logging.basicConfig(format='%(asctime)s [%(levelname)s] %(message)s',
                     level=logging.ERROR)
@@ -27,7 +27,7 @@ with ShdlcSerialPort(port='/dev/ttyUSB0', baudrate=460800) as port:
                                            slave_address=0x28)
 
     # Define gas (or gas mixes)
-    measure_mode = 'Air'
+    measure_mode = MeasurementMode.Air
     permille = 200  # only applies for gas mixes
 
     # Initialize sensor:

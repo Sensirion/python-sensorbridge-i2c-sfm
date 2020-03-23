@@ -39,6 +39,7 @@ setup(
         'pytest-runner~=4.2',
     ],
     install_requires=[
+        'enum34;python_version<"3.4"',
         'sensirion-shdlc-sensorbridge~=0.1.2',
     ],
     extras_require={

@@ -5,14 +5,22 @@ from __future__ import absolute_import, division, print_function
 
 from .commands import Sfm3019I2cCmdReadMeas, \
     Sfm3019I2cCmdReadProductIdentifierAndSerialNumber, \
-    Sfm3019I2cCmdStopMeas, Sfm3019I2cCmdGetUnitAndFactorsForMeasurementType
-from .sfm3019_constants import MeasurementCmds, MeasurementModes
+    Sfm3019I2cCmdStartMeasAir, Sfm3019I2cCmdStartMeasAirO2Mix, \
+    Sfm3019I2cCmdStartMeasO2, Sfm3019I2cCmdStopMeas, \
+    Sfm3019I2cCmdGetUnitAndFactors
+from .sfm3019_constants import MeasurementMode
 
 
 class Sfm3019I2cSensorBridgeDevice:
     """
     SFM3019 I²C device class to allow executing I²C commands.
     """
+
+    MeasurementCmds = {
+        MeasurementMode.O2: Sfm3019I2cCmdStartMeasO2,
+        MeasurementMode.Air: Sfm3019I2cCmdStartMeasAir,
+        MeasurementMode.AirO2Mix: Sfm3019I2cCmdStartMeasAirO2Mix,
+    }
 
     def __init__(self, sensor_bridge, sensor_bridge_port, slave_address=0x2E):
         """
@@ -56,7 +64,7 @@ class Sfm3019I2cSensorBridgeDevice:
     def _get_factors_and_unit(self, measure_mode):
         """
         Read the sensor programmed scale factor and the set unit
-        :param string measure_mode:
+        :param MeasurementMode measure_mode:
             Current measurement mode used to perform measurements.
         :return:
           The measured flow and temperature
@@ -65,7 +73,7 @@ class Sfm3019I2cSensorBridgeDevice:
         :rtype:
             triple
         """
-        return self._execute(Sfm3019I2cCmdGetUnitAndFactorsForMeasurementType(MeasurementCmds[measure_mode]))
+        return self._execute(Sfm3019I2cCmdGetUnitAndFactors(self.MeasurementCmds[measure_mode].COMMAND))
 
     def _convert_measurement_data(self, params):
         return (float(params[0]) - self._flow_offset) / self._flow_scale_factor, float(params[1] / 200.)
@@ -87,23 +95,23 @@ class Sfm3019I2cSensorBridgeDevice:
         hex_res = self._execute(Sfm3019I2cCmdReadProductIdentifierAndSerialNumber())
         return hex_res[0:4], hex_res[4:]
 
-    def start_continuous_measurement(self, measure_mode='Air',
+    def start_continuous_measurement(self, measure_mode=MeasurementMode.Air,
                                      air_o2_mix_fraction_permille=None):
         """
         Start a continuous measurement with the specified gas
 
-        :param string measure_mode:
+        :param MeasurementMode measure_mode:
             Configure the type of measurement to perform. Check the datasheet
-            for more information. Available are 'Air', 'O2' and 'AirO2Mix'
+            for more information.
         :param int air_o2_mix_fraction_permille:
             Fraction (in permille 0-1000) of O2 contained in the Air/O2 Mix.
             This parameter is only used when measure_mode is 'AirO2Mix'.
         """
-        if measure_mode == 'AirO2Mix':
-            mm = MeasurementModes[measure_mode]
-            return self._execute(mm(air_o2_mix_fraction_permille))
+        if measure_mode == MeasurementMode.AirO2Mix:
+            cmd = self.MeasurementCmds[measure_mode]
+            return self._execute(cmd(air_o2_mix_fraction_permille))
 
-        return self._execute(MeasurementModes[measure_mode]())
+        return self._execute(self.MeasurementCmds[measure_mode]())
 
     def stop_continuous_measurement(self):
         return self._execute(Sfm3019I2cCmdStopMeas())

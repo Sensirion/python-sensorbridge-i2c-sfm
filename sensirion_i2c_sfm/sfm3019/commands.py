@@ -86,7 +86,7 @@ class Sfm3019I2cCmdStartMeasO2(Sfm3019I2cCmdBase):
         Constructs a new command.
         """
         super(Sfm3019I2cCmdStartMeasO2, self).__init__(
-            command=self.COMMAND,
+            command=Sfm3019I2cCmdStartMeasO2.COMMAND,
             tx_words=[],
             rx_length=0,
             read_delay=0.012,
@@ -99,14 +99,14 @@ class Sfm3019I2cCmdStartMeasAir(Sfm3019I2cCmdBase):
     SFM3019 I²C command "Start continous Measurement of Air"
     """
 
-    COMMAND = 0x3603
+    COMMAND = 0x3608
 
     def __init__(self):
         """
         Constructs a new command.
         """
         super(Sfm3019I2cCmdStartMeasAir, self).__init__(
-            command=self.COMMAND,
+            command=Sfm3019I2cCmdStartMeasAir.COMMAND,
             tx_words=[],
             rx_length=0,
             read_delay=0.012,
@@ -130,7 +130,7 @@ class Sfm3019I2cCmdStartMeasAirO2Mix(Sfm3019I2cCmdBase):
             raise ValueError("O2 volume fraction not in valid range 0-1000")
 
         super(Sfm3019I2cCmdStartMeasAirO2Mix, self).__init__(
-            command=self.COMMAND,
+            command=Sfm3019I2cCmdStartMeasAirO2Mix.COMMAND,
             tx_words=[o2_volume_fraction_in_permille],
             rx_length=0,
             read_delay=0.012,
@@ -176,17 +176,17 @@ class Sfm3019I2cCmdStopMeas(Sfm3019I2cCmdBase):
         )
 
 
-class Sfm3019I2cCmdGetUnitAndFactorsForMeasurementType(Sfm3019I2cCmdBase):
+class Sfm3019I2cCmdGetUnitAndFactors(Sfm3019I2cCmdBase):
     """
-    SFM3019 I²C command "Get the current set scale factor and unit according to the actual measurement mode"
+    SFM3019 I²C command "Get the currently set scale factor and unit for the defined measurement mode"
     """
-    def __init__(self, measure_command):
+    def __init__(self, measure_cmd):
         """
         Constructs a new command.
         """
-        super(Sfm3019I2cCmdGetUnitAndFactorsForMeasurementType, self).__init__(
+        super(Sfm3019I2cCmdGetUnitAndFactors, self).__init__(
             command=0x3661,
-            tx_words=[measure_command],
+            tx_words=[measure_cmd],
             rx_length=9,
             read_delay=0.0005,
             timeout=0,

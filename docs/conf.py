@@ -17,19 +17,19 @@
 # sys.path.insert(0, os.path.abspath('.'))
 
 from datetime import datetime
-import sensirion_i2c_sfm
+import sensirion_sensorbridge_i2c_sfm
 
 # -- Project information -----------------------------------------------------
 
-project = u'Sensirion SFM I²C Python Driver'
+project = u'Sensirion SFM I²C Python Driver for use with the Sensorbridge'
 copyright = u'{} Sensirion AG, Switzerland'.format(datetime.now().year)
 author = u'Sensirion AG'
 
 
 # The short X.Y version
-version = sensirion_i2c_sfm.__version__
+version = sensirion_sensorbridge_i2c_sfm.__version__
 # The full version, including alpha/beta/rc tags
-release = sensirion_i2c_sfm.__version__
+release = sensirion_sensorbridge_i2c_sfm.__version__
 
 
 # -- General configuration ---------------------------------------------------

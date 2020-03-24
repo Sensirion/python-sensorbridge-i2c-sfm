@@ -96,7 +96,7 @@ class SensirionWordI2cCommand:
             The received words, or None if there is no data received.
         :rtype:
             list(int) or None
-        :raise ~sensirion_i2c_sfm.sensirion_word_command.I2cChecksumError:
+        :raise ~sensirion_sensorbridge_i2c_sfm.sensirion_word_command.I2cChecksumError:
             If a received CRC was wrong.
         """
         data = bytearray(data)  # Python 2 compatibility
@@ -121,13 +121,13 @@ class SensirionWordI2cCommand:
         Build the raw bytes to send from given command and words.
 
         :param command: See
-            :py:meth:`~sensirion_i2c_sfm.sensirion_word_command.__init__`.
+            :py:meth:`~sensirion_sensorbridge_i2c_sfm.sensirion_word_command.__init__`.
         :param command_bytes: See
-            :py:meth:`~sensirion_i2c_sfm.sensirion_word_command.__init__`.
+            :py:meth:`~sensirion_sensorbridge_i2c_sfm.sensirion_word_command.__init__`.
         :param tx_words: See
-            :py:meth:`~sensirion_i2c_sfm.sensirion_word_command.__init__`.
+            :py:meth:`~sensirion_sensorbridge_i2c_sfm.sensirion_word_command.__init__`.
         :param crc: See
-            :py:meth:`~sensirion_i2c_sfm.sensirion_word_command.__init__`.
+            :py:meth:`~sensirion_sensorbridge_i2c_sfm.sensirion_word_command.__init__`.
         :return:
             The raw bytes to send, or None if no write header is needed.
         :rtype:

@@ -3,8 +3,8 @@
 
 from __future__ import absolute_import, division, print_function
 
-from sensirion_i2c_sfm.crc_calculator import CrcCalculator
-from sensirion_i2c_sfm.sensirion_word_command import SensirionWordI2cCommand
+from sensirion_sensorbridge_i2c_sfm.crc_calculator import CrcCalculator
+from sensirion_sensorbridge_i2c_sfm.sensirion_word_command import SensirionWordI2cCommand
 
 
 def int16(word):
@@ -42,6 +42,11 @@ class Sfm3019I2cCmdBase(SensirionWordI2cCommand):
             if the device needs some time to prepare the RX data, e.g. if it
             has to perform a measurement. Set to 0.0 to indicate that no delay
             is needed, i.e. the device does not need any processing time.
+        :param float timeout:
+            Timeout (in Seconds) to be used in case of clock stretching. If the
+            device stretches the clock longer than this value, the transceive
+            operation will be aborted with a timeout error. Set to 0.0 to indicate
+            that the device will not stretch the clock for this command.
         """
         super(Sfm3019I2cCmdBase, self).__init__(
             command=command,
@@ -71,6 +76,14 @@ class Sfm3019I2cCmdReadProductIdentifierAndSerialNumber(Sfm3019I2cCmdBase):
                              timeout=0,
                              )
 
+    """
+    Interprets the raw response from the device and returns it in the proper data type.
+
+    :param bytes data: Received raw bytes from the read operation.
+    :return: Product identifier and serial number
+    :rtype: tuple (int)
+    """
+
     def interpret_response(self, data):
         words = Sfm3019I2cCmdBase.interpret_response(self, data)
         product_id = words[0] << 16 | words[1]
@@ -80,7 +93,7 @@ class Sfm3019I2cCmdReadProductIdentifierAndSerialNumber(Sfm3019I2cCmdBase):
 
 class Sfm3019I2cCmdStartMeasO2(Sfm3019I2cCmdBase):
     """
-    SFM3019 I²C command "Start continous Measurement of O2"
+    SFM3019 I²C command "Start continuous Measurement of O2"
     """
 
     COMMAND = 0x3603
@@ -100,7 +113,7 @@ class Sfm3019I2cCmdStartMeasO2(Sfm3019I2cCmdBase):
 
 class Sfm3019I2cCmdStartMeasAir(Sfm3019I2cCmdBase):
     """
-    SFM3019 I²C command "Start continous Measurement of Air"
+    SFM3019 I²C command "Start continuous Measurement of Air"
     """
 
     COMMAND = 0x3608
@@ -159,6 +172,14 @@ class Sfm3019I2cCmdReadMeas(Sfm3019I2cCmdBase):
             timeout=0,
         )
 
+    """
+    Interprets the raw response from the device and returns it in the proper data type.
+
+    :param bytes data: Received raw bytes from the read operation.
+    :return: Flow raw ADC value and temperature raw ADC value
+    :rtype: tuple (int)
+    """
+
     def interpret_response(self, data):
         words = Sfm3019I2cCmdBase.interpret_response(self, data)
         return int16(words[0]), int16(words[1])
@@ -199,6 +220,14 @@ class Sfm3019I2cCmdGetUnitAndFactors(Sfm3019I2cCmdBase):
             read_delay=0.0005,
             timeout=0,
         )
+
+    """
+    Interprets the raw response from the device and returns it in the proper data type.
+
+    :param bytes data: Received raw bytes from the read operation.
+    :return: Flow scale factor, offset and unit according to datasheet
+    :rtype: triple (float, float, int)
+    """
 
     def interpret_response(self, data):
         words = Sfm3019I2cCmdBase.interpret_response(self, data)

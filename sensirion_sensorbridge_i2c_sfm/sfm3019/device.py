@@ -13,7 +13,7 @@ from .sfm3019_constants import MeasurementMode, flow_unit_prefix, flow_unit, flo
 
 class Sfm3019I2cSensorBridgeDevice:
     """
-    SFM3019 I²C device class to allow executing I²C commands.
+    SFM3019 I²C device class to allow executing I²C commands via Sensirion's Sensorbridge.
     """
 
     MeasurementCmds = {
@@ -26,8 +26,10 @@ class Sfm3019I2cSensorBridgeDevice:
         """
         Constructs a new SFM3019 I²C device.
 
-        :param ~sensirion_i2c_driver.connection.I2cConnection connection:
-            The I²C connection to use for communication.
+        :param ~sensirion_shdlc_sensorbridge.device.SensorBridgeShdlcDevice sensor_bridge:
+            The I²C SHDLC Sensorbridge connection to use for communication.
+        :param int sensor_bridge_port:
+            The port on the Sensorbridge which the sensor is connected to.
         :param byte slave_address:
             The I²C slave address, defaults to 0x2E.
         """
@@ -42,7 +44,7 @@ class Sfm3019I2cSensorBridgeDevice:
     def _execute(self, command):
         """
         Perform read and write operations of an I²C command.
-        :param ~command.command.I2cCommand command:
+        :param ~SensirionWordI2cCommand command:
             The command to execute.
         :return:
             - In single channel mode: The interpreted data of the command.
@@ -53,14 +55,11 @@ class Sfm3019I2cSensorBridgeDevice:
             In single-channel mode, an exception is raised in case of
             communication errors.
         """
-        address = self._slave_address
-        rx_length = command.rx_length
-        timeout_us = command.timeout * 1e6
         response = self._sensor_bridge.transceive_i2c(self._sensor_bridge_port,
-                                                      address=address,
+                                                      address=self._slave_address,
                                                       tx_data=command.tx_data,
-                                                      rx_length=rx_length,
-                                                      timeout_us=timeout_us,
+                                                      rx_length=command.rx_length,
+                                                      timeout_us=command.timeout * 1e6,
                                                       )
         return command.interpret_response(response)
 
@@ -70,19 +69,16 @@ class Sfm3019I2cSensorBridgeDevice:
         :param MeasurementMode measure_mode:
             Current measurement mode used to perform measurements.
         :return:
-          The measured flow and temperature
-          - scale factor
-          - unit
+          - The flow scale factor and offset as floats
+          - The flow unit as int
         :rtype:
             triple
         """
-        return self._execute(Sfm3019I2cCmdGetUnitAndFactors(
-            self.MeasurementCmds[measure_mode].COMMAND))
+        return self._execute(Sfm3019I2cCmdGetUnitAndFactors(self.MeasurementCmds[measure_mode].COMMAND))
 
     def _convert_measurement_data(self, params):
         """Apply offset and scaling to measurement data"""
-        return ((float(params[0]) - self._flow_offset) /
-                self._flow_scale_factor, float(params[1] / 200.))
+        return (float(params[0]) - self._flow_offset) / self._flow_scale_factor, float(params[1] / 200.)
 
     @property
     def flow_unit(self):
@@ -97,9 +93,14 @@ class Sfm3019I2cSensorBridgeDevice:
         return "{}{}{}".format(prefix, unit, time)
 
     def initialize_sensor(self, measure_mode):
+        """
+        Stop any running continuous measurement that may execute on the sensor
+        and read out some sensor parameters.
+
+        Needs to be done before any measurement call is executed.
+        """
         self.stop_continuous_measurement()
-        self._flow_scale_factor, self._flow_offset, self._flow_unit = \
-            self._get_factors_and_unit(measure_mode)
+        self._flow_scale_factor, self._flow_offset, self._flow_unit = self._get_factors_and_unit(measure_mode)
 
     def read_product_identifier_and_serial_number(self):
         """
@@ -107,7 +108,7 @@ class Sfm3019I2cSensorBridgeDevice:
 
         :return:
             The product identifier (4b) and serial number (12b), both formatted
-            as decimal number.
+            as decimal number (int).
         :rtype:
             tuple
         """
@@ -148,5 +149,4 @@ class Sfm3019I2cSensorBridgeDevice:
         :rtype:
             tuple
         """
-        return self._convert_measurement_data(
-            self._execute(Sfm3019I2cCmdReadMeas()))
+        return self._convert_measurement_data(self._execute(Sfm3019I2cCmdReadMeas()))

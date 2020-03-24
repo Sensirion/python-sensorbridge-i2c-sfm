@@ -8,7 +8,7 @@ import re
 
 
 # Read version number from version.py
-version_line = open("sensirion_i2c_sfm/version.py", "rt").read()
+version_line = open("sensirion_sensorbridge_i2c_sfm/version.py", "rt").read()
 result = re.search(r"^version = ['\"]([^'\"]*)['\"]", version_line, re.M)
 if result:
     version_string = result.group(1)

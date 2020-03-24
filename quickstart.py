@@ -39,6 +39,7 @@ with ShdlcSerialPort(port='/dev/ttyUSB0', baudrate=460800) as port:
     # Read out product information
     pid_sn = sfm3019.read_product_identifier_and_serial_number()
     print("SFM3019 SN: {}".format(pid_sn[1]))
+    print("Flow unit of sensor: {}".format(sfm3019.flow_unit))
 
     # Measure
     sfm3019.start_continuous_measurement(measure_mode,

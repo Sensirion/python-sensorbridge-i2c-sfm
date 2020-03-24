@@ -8,7 +8,7 @@ from .commands import Sfm3019I2cCmdReadMeas, \
     Sfm3019I2cCmdStartMeasAir, Sfm3019I2cCmdStartMeasAirO2Mix, \
     Sfm3019I2cCmdStartMeasO2, Sfm3019I2cCmdStopMeas, \
     Sfm3019I2cCmdGetUnitAndFactors
-from .sfm3019_constants import MeasurementMode
+from .sfm3019_constants import MeasurementMode, flow_unit_prefix, flow_unit, flow_time_base
 
 
 class Sfm3019I2cSensorBridgeDevice:
@@ -84,6 +84,18 @@ class Sfm3019I2cSensorBridgeDevice:
         return ((float(params[0]) - self._flow_offset) /
                 self._flow_scale_factor, float(params[1] / 200.))
 
+    @property
+    def flow_unit(self):
+        """
+        :return: The flow unit as a string according to datasheet
+        :rtype: str
+        """
+        unit = flow_unit[self._flow_unit >> 8 & 0xf]
+        time = flow_time_base[self._flow_unit >> 4 & 0xf]
+        prefix = flow_unit_prefix[self._flow_unit & 0xf]
+
+        return "{}{}{}".format(prefix, unit, time)
+
     def initialize_sensor(self, measure_mode):
         self.stop_continuous_measurement()
         self._flow_scale_factor, self._flow_offset, self._flow_unit = \
@@ -95,13 +107,11 @@ class Sfm3019I2cSensorBridgeDevice:
 
         :return:
             The product identifier (4b) and serial number (12b), both formatted
-            as hex string.
+            as decimal number.
         :rtype:
             tuple
         """
-        hex_res = self._execute(
-                Sfm3019I2cCmdReadProductIdentifierAndSerialNumber())
-        return hex_res[0:4], hex_res[4:]
+        return self._execute(Sfm3019I2cCmdReadProductIdentifierAndSerialNumber())
 
     def start_continuous_measurement(self, measure_mode=MeasurementMode.Air,
                                      air_o2_mix_fraction_permille=None):
@@ -139,4 +149,4 @@ class Sfm3019I2cSensorBridgeDevice:
             tuple
         """
         return self._convert_measurement_data(
-                self._execute(Sfm3019I2cCmdReadMeas()))
+            self._execute(Sfm3019I2cCmdReadMeas()))

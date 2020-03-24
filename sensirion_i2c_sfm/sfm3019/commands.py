@@ -9,7 +9,7 @@ from sensirion_i2c_sfm.crc_calculator import CrcCalculator
 
 def int16(word):
     assert 0 <= word <= 0xFFFF, "Not an unsigned 16b word"
-    if word and 0x8000:
+    if word & 0x8000:
         return word - 0x10000
     return word
 
@@ -71,7 +71,9 @@ class Sfm3019I2cCmdReadProductIdentifierAndSerialNumber(Sfm3019I2cCmdBase):
 
     def interpret_response(self, data):
         words = Sfm3019I2cCmdBase.interpret_response(self, data)
-        return ''.join(['{:04X}'.format(i) for i in words])
+        product_id = words[0] << 16 | words[1]
+        serial_number = words[2] << 48 | words[3] << 32 | words[4] << 16 | words[5]
+        return product_id, serial_number
 
 
 class Sfm3019I2cCmdStartMeasO2(Sfm3019I2cCmdBase):

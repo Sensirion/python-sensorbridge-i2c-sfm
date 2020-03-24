@@ -25,7 +25,7 @@ with ShdlcSerialPort(port='/dev/ttyUSB0', baudrate=460800) as port:
 
     # Create SFM device
     sfm3019 = Sfm3019I2cSensorBridgeDevice(bridge, SensorBridgePort.ONE,
-                                           slave_address=0x28)
+                                           slave_address=0x2E)
 
     # Define gas (or gas mixes)
     measure_mode = MeasurementMode.Air

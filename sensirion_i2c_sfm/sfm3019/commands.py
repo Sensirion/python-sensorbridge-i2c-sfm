@@ -3,8 +3,8 @@
 
 from __future__ import absolute_import, division, print_function
 
-from sensirion_i2c_sfm.sensirion_word_command import SensirionWordI2cCommand
 from sensirion_i2c_sfm.crc_calculator import CrcCalculator
+from sensirion_i2c_sfm.sensirion_word_command import SensirionWordI2cCommand
 
 
 def int16(word):
@@ -18,6 +18,7 @@ class Sfm3019I2cCmdBase(SensirionWordI2cCommand):
     """
     SFM3019 I²C base command.
     """
+
     def __init__(self, command, tx_words, rx_length, read_delay, timeout):
         """
         Constructs a new SFM3019 I²C command.
@@ -57,6 +58,7 @@ class Sfm3019I2cCmdReadProductIdentifierAndSerialNumber(Sfm3019I2cCmdBase):
     """
     SFM3019 I²C command "Read Product Identifier and Serial Number".
     """
+
     def __init__(self):
         """
         Constructs a new command.
@@ -144,6 +146,7 @@ class Sfm3019I2cCmdReadMeas(Sfm3019I2cCmdBase):
     """
     SFM3019 I²C command "Read continuous measurement"
     """
+
     def __init__(self):
         """
         Constructs a new command.
@@ -165,6 +168,7 @@ class Sfm3019I2cCmdStopMeas(Sfm3019I2cCmdBase):
     """
     SFM3019 I²C command "Stop continuous measurements"
     """
+
     def __init__(self):
         """
         Constructs a new command.
@@ -183,6 +187,7 @@ class Sfm3019I2cCmdGetUnitAndFactors(Sfm3019I2cCmdBase):
     SFM3019 I²C command "Get the currently set scale factor and unit for the
     defined measurement mode"
     """
+
     def __init__(self, measure_cmd):
         """
         Constructs a new command.

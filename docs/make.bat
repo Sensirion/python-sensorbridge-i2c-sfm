@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=.
 set BUILDDIR=_build
-set SPHINXPROJ=sensirion-i2c-sfm
+set SPHINXPROJ=sensirion-sensorbridge-i2c-sfm
 
 if "%1" == "" goto help
 

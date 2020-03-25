@@ -24,13 +24,13 @@ long_description = readme.strip() + "\n\n" + changelog.strip() + "\n"
 
 
 setup(
-    name='sensirion-i2c-sfm',
+    name='sensirion-sensorbridge-i2c-sfm',
     version=version_string,
-    author='Daniel Straessler',
-    author_email='daniel.straessler@sensirion.com',
-    description='I2C Driver for Sensirion Flow Sensors',
+    author='Christian Jaeggi',
+    author_email='christian.jaeggi@sensirion.com',
+    description='I2C Driver for Sensirion Flow Sensors via Sensorbridge',
     license='BSD',
-    keywords='sensirion i2c driver sfm sfm3019',
+    keywords='sensirion i2c driver sfm sfm3019 sensorbridge',
     url='http://developer.sensirion.com',
     packages=find_packages(exclude=['tests', 'tests.*']),
     long_description=long_description,

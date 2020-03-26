@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = sensirion-i2c-sfm
+SPHINXPROJ    = sensirion-sensorbridge-i2c-sfm
 SOURCEDIR     = .
 BUILDDIR      = _build
 

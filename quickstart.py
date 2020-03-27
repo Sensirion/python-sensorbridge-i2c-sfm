@@ -34,9 +34,9 @@ with ShdlcSerialPort(port='/dev/ttyUSB0', baudrate=460800) as port:
     sfm3019.initialize_sensor(measure_mode)
 
     # Read out product information
-    pid_sn = sfm3019.read_product_identifier_and_serial_number()
-    print("SFM3019 SN: {}".format(pid_sn[1]))
-    print("Flow unit of sensor: {}".format(sfm3019.flow_unit))
+    pid, sn = sfm3019.read_product_identifier_and_serial_number()
+    print("SFM3019 SN: {}".format(sn))
+    print("Flow unit of sensor: {} (Volume at temperature in degree Centigrade)".format(sfm3019.flow_unit))
 
     # Start measurements
     sfm3019.start_continuous_measurement(measure_mode, air_o2_mix_fraction_permille=permille)

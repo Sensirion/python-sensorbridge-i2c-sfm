@@ -59,10 +59,12 @@ class Sfm3019I2cSensorBridgeDevice:
         # retries reading data until the timeout is elapsed. Thus we can just
         # use the read delay as timeout (resp. whichever is greater).
         total_timeout_us = max(command.read_delay, command.timeout) * 1e6
+        tx_data = command.tx_data or b""
+        rx_length = command.rx_length or 0
         response = self._sensor_bridge.transceive_i2c(self._sensor_bridge_port,
                                                       address=self._slave_address,
-                                                      tx_data=command.tx_data,
-                                                      rx_length=command.rx_length,
+                                                      tx_data=tx_data,
+                                                      rx_length=rx_length,
                                                       timeout_us=total_timeout_us,
                                                       )
         return command.interpret_response(response)

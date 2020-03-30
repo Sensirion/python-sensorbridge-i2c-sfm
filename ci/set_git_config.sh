@@ -5,8 +5,12 @@ set -eufv -o pipefail
 
 # install ssh private key (set as CI variable in GitLab project settings)
 mkdir -p ~/.ssh
-echo "$SSH_DEPLOY_KEY" > ~/.ssh/id_rsa
-chmod 400 ~/.ssh/id_rsa
+if [ -z ${SSH_DEPLOY_KEY+x} ]; then
+  echo "Warning: No deployment key is set"
+else
+  echo "$SSH_DEPLOY_KEY" > ~/.ssh/id_rsa
+  chmod 400 ~/.ssh/id_rsa
+fi
 
 # change remote URL to SSH to allow pushing with SSH
 git remote set-url --push origin "git@gitlab:${CI_PROJECT_PATH}.git"

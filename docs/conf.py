@@ -17,6 +17,7 @@
 # sys.path.insert(0, os.path.abspath('.'))
 
 from datetime import datetime
+import sphinx.ext.autodoc
 import sensirion_sensorbridge_i2c_sfm
 
 # -- Project information -----------------------------------------------------
@@ -71,7 +72,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = [u'_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = [u'_build', 'Thumbs.db', '.DS_Store', 'generated']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -107,78 +108,6 @@ html_static_path = ['_static']
 
 html_favicon = 'favicon.ico'
 
-# -- Options for HTMLHelp output ---------------------------------------------
-
-# Output file base name for HTML help builder.
-htmlhelp_basename = 'PythonDriverforSensirionSensorBridgeI2cSfm'
-
-
-# -- Options for LaTeX output ------------------------------------------------
-
-latex_elements = {
-    # The paper size ('letterpaper' or 'a4paper').
-    #
-    # 'papersize': 'letterpaper',
-
-    # The font size ('10pt', '11pt' or '12pt').
-    #
-    # 'pointsize': '10pt',
-
-    # Additional stuff for the LaTeX preamble.
-    #
-    # 'preamble': '',
-
-    # Latex figure (float) alignment
-    #
-    # 'figure_align': 'htbp',
-}
-
-# Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title,
-#  author, documentclass [howto, manual, or own class]).
-latex_documents = [
-    (
-        master_doc,
-        'PythonDriverforSensirionSensorBridgeI2cSfm.tex',
-        u'Python Driver for I²C SFM Documentation',
-        u'Sensirion AG',
-        'manual'
-    ),
-]
-
-
-# -- Options for manual page output ------------------------------------------
-
-# One entry per manual page. List of tuples
-# (source start file, name, description, authors, manual section).
-man_pages = [
-    (
-        master_doc,
-        'pythondriverforsensirionsensorbridgei2csfm',
-        u'Python Driver for I²C SFM Documentation',
-        [author],
-        1
-    )
-]
-
-
-# -- Options for Texinfo output ----------------------------------------------
-
-# Grouping the document tree into Texinfo files. List of tuples
-# (source start file, target name, title, author,
-#  dir menu entry, description, category)
-texinfo_documents = [
-    (
-        master_doc,
-        'PythonDriverforSensirionSensorBridgeI2cSfm',
-        u'Python Driver for I²C SFM Documentation',
-        author,
-        'PythonDriverforSensirionSensorBridgeI2cSfm',
-        'One line description of project.',
-        'Miscellaneous'
-    ),
-]
-
 
 # -- Extension configuration -------------------------------------------------
 
@@ -202,6 +131,11 @@ def autodoc_skip_member(app, what, name, obj, skip, options):
 def setup(app):
     app.connect('autodoc-skip-member', autodoc_skip_member)
 
+
+# Workaround for "=None" documentation of instance attributes
+# (see https://github.com/sphinx-doc/sphinx/issues/2044)
+sphinx.ext.autodoc.InstanceAttributeDocumenter.add_directive_header = \
+    sphinx.ext.autodoc.ClassLevelDocumenter.add_directive_header
 
 scv_whitelist_branches = ('master',)
 

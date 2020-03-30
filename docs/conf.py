@@ -110,7 +110,7 @@ html_favicon = 'favicon.ico'
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'PythonDriverforSensirionI2cSps'
+htmlhelp_basename = 'PythonDriverforSensirionSensorBridgeI2cSfm'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -139,7 +139,7 @@ latex_elements = {
 latex_documents = [
     (
         master_doc,
-        'PythonDriverforSensirionI2cSfm.tex',
+        'PythonDriverforSensirionSensorBridgeI2cSfm.tex',
         u'Python Driver for I²C SFM Documentation',
         u'Sensirion AG',
         'manual'
@@ -154,7 +154,7 @@ latex_documents = [
 man_pages = [
     (
         master_doc,
-        'pythondriverforsensirioni2csfm',
+        'pythondriverforsensirionsensorbridgei2csfm',
         u'Python Driver for I²C SFM Documentation',
         [author],
         1
@@ -170,10 +170,10 @@ man_pages = [
 texinfo_documents = [
     (
         master_doc,
-        'PythonDriverforSensirionI2cSfm',
+        'PythonDriverforSensirionSensorBridgeI2cSfm',
         u'Python Driver for I²C SFM Documentation',
         author,
-        'PythonDriverforSensirionI2cSfm',
+        'PythonDriverforSensirionSensorBridgeI2cSfm',
         'One line description of project.',
         'Miscellaneous'
     ),

@@ -1,0 +1,634 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API Reference &mdash; Sensirion SFM I²C Python Driver for use with the Sensorbridge 0.1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Quick Start" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Sensirion SFM I²C Python Driver for use with the Sensorbridge
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sfm3019i2cdevice">Sfm3019I2cDevice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sfm3019i2ccommand">Sfm3019I2cCommand</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Sensirion SFM I²C Python Driver for use with the Sensorbridge</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>API Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sfm3019i2cdevice">
+<h2>Sfm3019I2cDevice<a class="headerlink" href="#sfm3019i2cdevice" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-sensirion_sensorbridge_i2c_sfm.sfm3019.device"></span><dl class="class">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice">
+<em class="property">class </em><code class="descclassname">sensirion_sensorbridge_i2c_sfm.sfm3019.device.</code><code class="descname">Sfm3019I2cSensorBridgeDevice</code><span class="sig-paren">(</span><em>sensor_bridge</em>, <em>sensor_bridge_port</em>, <em>slave_address=46</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/device.html#Sfm3019I2cSensorBridgeDevice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice" title="Permalink to this definition">¶</a></dt>
+<dd><p>SFM3019 I²C device class to allow executing I²C commands via Sensirion’s Sensorbridge.</p>
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>sensor_bridge</em>, <em>sensor_bridge_port</em>, <em>slave_address=46</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/device.html#Sfm3019I2cSensorBridgeDevice.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new SFM3019 I²C device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sensor_bridge</strong> (<em>SensorBridgeShdlcDevice</em>) – The I²C SHDLC Sensorbridge connection to use for communication.</li>
+<li><strong>sensor_bridge_port</strong> (<em>int</em>) – The port on the Sensorbridge which the sensor is connected to.</li>
+<li><strong>slave_address</strong> (<em>byte</em>) – The I²C slave address, defaults to 0x2E.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice.flow_unit">
+<code class="descname">flow_unit</code><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice.flow_unit" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The flow unit as a string according to datasheet</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice.initialize_sensor">
+<code class="descname">initialize_sensor</code><span class="sig-paren">(</span><em>measure_mode</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/device.html#Sfm3019I2cSensorBridgeDevice.initialize_sensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice.initialize_sensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop any running continuous measurement that may execute on the sensor
+and read out some sensor parameters.</p>
+<p>Needs to be done before any measurement call is executed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice.read_product_identifier_and_serial_number">
+<code class="descname">read_product_identifier_and_serial_number</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/device.html#Sfm3019I2cSensorBridgeDevice.read_product_identifier_and_serial_number"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice.read_product_identifier_and_serial_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the product identifier and serial number.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The product identifier (4b) and serial number (12b), both formatted
+as decimal number (int).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice.start_continuous_measurement">
+<code class="descname">start_continuous_measurement</code><span class="sig-paren">(</span><em>measure_mode=&lt;MeasurementMode.Air: (1</em>, <em>)&gt;</em>, <em>air_o2_mix_fraction_permille=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/device.html#Sfm3019I2cSensorBridgeDevice.start_continuous_measurement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice.start_continuous_measurement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start a continuous measurement with the specified gas</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>measure_mode</strong> (<em>MeasurementMode</em>) – Configure the type of measurement to perform. Check the datasheet
+for more information.</li>
+<li><strong>air_o2_mix_fraction_permille</strong> (<em>int</em>) – Fraction (in permille 0-1000) of O2 contained in the Air/O2 Mix.
+This parameter is only used when measure_mode is ‘AirO2Mix’.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice.read_continuous_measurement">
+<code class="descname">read_continuous_measurement</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/device.html#Sfm3019I2cSensorBridgeDevice.read_continuous_measurement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice.read_continuous_measurement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a single measurement from the running measurement</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The measured flow and temperature<ul class="simple">
+<li>flow (float) -
+flow in unit specified by sensor.</li>
+<li>temperature (float) -
+Temperature in degree C.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="sfm3019i2ccommand">
+<h2>Sfm3019I2cCommand<a class="headerlink" href="#sfm3019i2ccommand" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-sensirion_sensorbridge_i2c_sfm.sfm3019.commands"></span><dl class="class">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdBase">
+<em class="property">class </em><code class="descclassname">sensirion_sensorbridge_i2c_sfm.sfm3019.commands.</code><code class="descname">Sfm3019I2cCmdBase</code><span class="sig-paren">(</span><em>command</em>, <em>tx_words</em>, <em>rx_length</em>, <em>read_delay</em>, <em>timeout</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>SFM3019 I²C base command.</p>
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdBase.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>command</em>, <em>tx_words</em>, <em>rx_length</em>, <em>read_delay</em>, <em>timeout</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdBase.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdBase.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new SFM3019 I²C command.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>command</strong> (<em>int/None</em>) – The command word to be sent to the device. None means that no
+command will be sent, i.e. only <code class="docutils literal notranslate"><span class="pre">tx_words</span></code> (if not None) will
+be sent.</li>
+<li><strong>tx_words</strong> (<em>list/None</em>) – Words (list of integers) to be sent to the I²C device. None means
+that no write header will be sent at all (if <code class="docutils literal notranslate"><span class="pre">command</span></code> is None
+too). An empty list means to send the write header (even if
+<code class="docutils literal notranslate"><span class="pre">command</span></code> is None), but without data following it.</li>
+<li><strong>rx_length</strong> (<em>int/None</em>) – Number of bytes to be read from the I²C device, including CRC
+bytes. None means that no read header is sent at all. Zero means
+to send the read header, but without reading any data.</li>
+<li><strong>read_delay</strong> (<em>float</em>) – Delay (in Seconds) to be inserted between the end of the write
+operation and the beginning of the read operation. This is needed
+if the device needs some time to prepare the RX data, e.g. if it
+has to perform a measurement. Set to 0.0 to indicate that no delay
+is needed, i.e. the device does not need any processing time.</li>
+<li><strong>timeout</strong> (<em>float</em>) – Timeout (in Seconds) to be used in case of clock stretching. If the
+device stretches the clock longer than this value, the transceive
+operation will be aborted with a timeout error. Set to 0.0 to indicate
+that the device will not stretch the clock for this command.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdBase.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdBase.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the raw response from the device to words (2 bytes), checks
+their CRC and retunrs the checked words.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received words, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(int) or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>I2cChecksumError</strong> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdReadProductIdentifierAndSerialNumber">
+<em class="property">class </em><code class="descclassname">sensirion_sensorbridge_i2c_sfm.sfm3019.commands.</code><code class="descname">Sfm3019I2cCmdReadProductIdentifierAndSerialNumber</code><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdReadProductIdentifierAndSerialNumber"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdReadProductIdentifierAndSerialNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>SFM3019 I²C command “Read Product Identifier and Serial Number”.</p>
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdReadProductIdentifierAndSerialNumber.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdReadProductIdentifierAndSerialNumber.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdReadProductIdentifierAndSerialNumber.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new command.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdReadProductIdentifierAndSerialNumber.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdReadProductIdentifierAndSerialNumber.interpret_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdReadProductIdentifierAndSerialNumber.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the raw response from the device to words (2 bytes), checks
+their CRC and retunrs the checked words.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received words, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(int) or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>I2cChecksumError</strong> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasO2">
+<em class="property">class </em><code class="descclassname">sensirion_sensorbridge_i2c_sfm.sfm3019.commands.</code><code class="descname">Sfm3019I2cCmdStartMeasO2</code><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdStartMeasO2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasO2" title="Permalink to this definition">¶</a></dt>
+<dd><p>SFM3019 I²C command “Start continuous Measurement of O2”</p>
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasO2.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdStartMeasO2.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasO2.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new command.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasO2.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasO2.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the raw response from the device to words (2 bytes), checks
+their CRC and retunrs the checked words.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received words, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(int) or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>I2cChecksumError</strong> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasAir">
+<em class="property">class </em><code class="descclassname">sensirion_sensorbridge_i2c_sfm.sfm3019.commands.</code><code class="descname">Sfm3019I2cCmdStartMeasAir</code><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdStartMeasAir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasAir" title="Permalink to this definition">¶</a></dt>
+<dd><p>SFM3019 I²C command “Start continuous Measurement of Air”</p>
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasAir.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdStartMeasAir.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasAir.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new command.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasAir.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasAir.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the raw response from the device to words (2 bytes), checks
+their CRC and retunrs the checked words.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received words, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(int) or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>I2cChecksumError</strong> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasAirO2Mix">
+<em class="property">class </em><code class="descclassname">sensirion_sensorbridge_i2c_sfm.sfm3019.commands.</code><code class="descname">Sfm3019I2cCmdStartMeasAirO2Mix</code><span class="sig-paren">(</span><em>o2_volume_fraction_in_permille</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdStartMeasAirO2Mix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasAirO2Mix" title="Permalink to this definition">¶</a></dt>
+<dd><p>SFM3019 I²C command “Start continuous Measurement of Air/O2 with Volume
+fraction of O2 (in ‰)”</p>
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasAirO2Mix.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>o2_volume_fraction_in_permille</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdStartMeasAirO2Mix.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasAirO2Mix.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new command.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasAirO2Mix.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStartMeasAirO2Mix.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the raw response from the device to words (2 bytes), checks
+their CRC and retunrs the checked words.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received words, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(int) or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>I2cChecksumError</strong> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdReadMeas">
+<em class="property">class </em><code class="descclassname">sensirion_sensorbridge_i2c_sfm.sfm3019.commands.</code><code class="descname">Sfm3019I2cCmdReadMeas</code><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdReadMeas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdReadMeas" title="Permalink to this definition">¶</a></dt>
+<dd><p>SFM3019 I²C command “Read continuous measurement”</p>
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdReadMeas.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdReadMeas.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdReadMeas.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new command.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdReadMeas.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdReadMeas.interpret_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdReadMeas.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the raw response from the device to words (2 bytes), checks
+their CRC and retunrs the checked words.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received words, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(int) or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>I2cChecksumError</strong> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStopMeas">
+<em class="property">class </em><code class="descclassname">sensirion_sensorbridge_i2c_sfm.sfm3019.commands.</code><code class="descname">Sfm3019I2cCmdStopMeas</code><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdStopMeas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStopMeas" title="Permalink to this definition">¶</a></dt>
+<dd><p>SFM3019 I²C command “Stop continuous measurements”</p>
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStopMeas.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdStopMeas.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStopMeas.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new command.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStopMeas.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdStopMeas.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the raw response from the device to words (2 bytes), checks
+their CRC and retunrs the checked words.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received words, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(int) or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>I2cChecksumError</strong> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdGetUnitAndFactors">
+<em class="property">class </em><code class="descclassname">sensirion_sensorbridge_i2c_sfm.sfm3019.commands.</code><code class="descname">Sfm3019I2cCmdGetUnitAndFactors</code><span class="sig-paren">(</span><em>measure_cmd</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdGetUnitAndFactors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdGetUnitAndFactors" title="Permalink to this definition">¶</a></dt>
+<dd><p>SFM3019 I²C command “Get the currently set scale factor and unit for the
+defined measurement mode”</p>
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdGetUnitAndFactors.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>measure_cmd</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdGetUnitAndFactors.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdGetUnitAndFactors.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new command.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdGetUnitAndFactors.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdGetUnitAndFactors.interpret_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdGetUnitAndFactors.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the raw response from the device to words (2 bytes), checks
+their CRC and retunrs the checked words.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received words, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(int) or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><strong>I2cChecksumError</strong> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020 Sensirion AG, Switzerland
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: master
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="master/api.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

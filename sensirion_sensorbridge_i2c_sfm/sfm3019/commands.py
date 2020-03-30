@@ -105,7 +105,7 @@ class Sfm3019I2cCmdStartMeasO2(Sfm3019I2cCmdBase):
         super(Sfm3019I2cCmdStartMeasO2, self).__init__(
             command=Sfm3019I2cCmdStartMeasO2.COMMAND,
             tx_words=[],
-            rx_length=0,
+            rx_length=None,
             read_delay=0.012,
             timeout=0,
         )
@@ -125,7 +125,7 @@ class Sfm3019I2cCmdStartMeasAir(Sfm3019I2cCmdBase):
         super(Sfm3019I2cCmdStartMeasAir, self).__init__(
             command=Sfm3019I2cCmdStartMeasAir.COMMAND,
             tx_words=[],
-            rx_length=0,
+            rx_length=None,
             read_delay=0.012,
             timeout=0,
         )
@@ -149,7 +149,7 @@ class Sfm3019I2cCmdStartMeasAirO2Mix(Sfm3019I2cCmdBase):
         super(Sfm3019I2cCmdStartMeasAirO2Mix, self).__init__(
             command=Sfm3019I2cCmdStartMeasAirO2Mix.COMMAND,
             tx_words=[o2_volume_fraction_in_permille],
-            rx_length=0,
+            rx_length=None,
             read_delay=0.012,
             timeout=0,
         )
@@ -166,7 +166,7 @@ class Sfm3019I2cCmdReadMeas(Sfm3019I2cCmdBase):
         """
         super(Sfm3019I2cCmdReadMeas, self).__init__(
             command=None,
-            tx_words=[],
+            tx_words=None,
             rx_length=6,
             read_delay=0,
             timeout=0,
@@ -197,7 +197,7 @@ class Sfm3019I2cCmdStopMeas(Sfm3019I2cCmdBase):
         super(Sfm3019I2cCmdStopMeas, self).__init__(
             command=0x3FF9,
             tx_words=[],
-            rx_length=0,
+            rx_length=None,
             read_delay=0.0005,
             timeout=0,
         )

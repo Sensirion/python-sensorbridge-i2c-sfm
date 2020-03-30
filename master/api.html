@@ -91,8 +91,8 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#sfm3019i2cdevice">Sfm3019I2cDevice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sfm3019i2ccommand">Sfm3019I2cCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-sensirion_sensorbridge_i2c_sfm.sfm3019.device">Sfm3019I2cDevice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-sensirion_sensorbridge_i2c_sfm.sfm3019.commands">Sfm3019I2cCommand</a></li>
 </ul>
 </li>
 </ul>
@@ -161,9 +161,9 @@
             
   <div class="section" id="api-reference">
 <h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="sfm3019i2cdevice">
-<h2>Sfm3019I2cDevice<a class="headerlink" href="#sfm3019i2cdevice" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-sensirion_sensorbridge_i2c_sfm.sfm3019.device"></span><dl class="class">
+<div class="section" id="module-sensirion_sensorbridge_i2c_sfm.sfm3019.device">
+<span id="sfm3019i2cdevice"></span><h2>Sfm3019I2cDevice<a class="headerlink" href="#module-sensirion_sensorbridge_i2c_sfm.sfm3019.device" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
 <dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice">
 <em class="property">class </em><code class="descclassname">sensirion_sensorbridge_i2c_sfm.sfm3019.device.</code><code class="descname">Sfm3019I2cSensorBridgeDevice</code><span class="sig-paren">(</span><em>sensor_bridge</em>, <em>sensor_bridge_port</em>, <em>slave_address=46</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/device.html#Sfm3019I2cSensorBridgeDevice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.device.Sfm3019I2cSensorBridgeDevice" title="Permalink to this definition">¶</a></dt>
 <dd><p>SFM3019 I²C device class to allow executing I²C commands via Sensirion’s Sensorbridge.</p>
@@ -271,9 +271,9 @@ Temperature in degree C.</li>
 </dd></dl>
 
 </div>
-<div class="section" id="sfm3019i2ccommand">
-<h2>Sfm3019I2cCommand<a class="headerlink" href="#sfm3019i2ccommand" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-sensirion_sensorbridge_i2c_sfm.sfm3019.commands"></span><dl class="class">
+<div class="section" id="module-sensirion_sensorbridge_i2c_sfm.sfm3019.commands">
+<span id="sfm3019i2ccommand"></span><h2>Sfm3019I2cCommand<a class="headerlink" href="#module-sensirion_sensorbridge_i2c_sfm.sfm3019.commands" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
 <dt id="sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdBase">
 <em class="property">class </em><code class="descclassname">sensirion_sensorbridge_i2c_sfm.sfm3019.commands.</code><code class="descname">Sfm3019I2cCmdBase</code><span class="sig-paren">(</span><em>command</em>, <em>tx_words</em>, <em>rx_length</em>, <em>read_delay</em>, <em>timeout</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_sensorbridge_i2c_sfm/sfm3019/commands.html#Sfm3019I2cCmdBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_sensorbridge_i2c_sfm.sfm3019.commands.Sfm3019I2cCmdBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>SFM3019 I²C base command.</p>

@@ -41,10 +41,10 @@ setup(
     ],
     extras_require={
         'test': [
-            'flake8~=3.6.0',
+            'flake8~=3.9.2',
+            'pytest~=4.6.11',
+            'pytest-cov~=2.12.1',
             'mock~=3.0.0',
-            'pytest~=3.10.0',
-            'pytest-cov~=2.6.0',
         ]
     },
     classifiers=[
@@ -54,6 +54,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Topic :: System :: Hardware :: Hardware Drivers'
     ]
 )

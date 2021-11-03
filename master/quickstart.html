@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quick Start &mdash; Sensirion SFM I²C Python Driver for use with the Sensorbridge 0.1.0 documentation</title>
+  <title>Quick Start &mdash; Sensirion SFM I²C Python Driver for use with the Sensorbridge 0.2.0 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.1.0
+                0.2.0
               </div>
             
           
@@ -173,6 +173,8 @@ installed with <code class="docutils literal notranslate"><span class="pre">pip<
 <span class="kn">from</span> <span class="nn">sensirion_shdlc_sensorbridge</span> <span class="kn">import</span> <span class="n">SensorBridgePort</span><span class="p">,</span> <span class="n">SensorBridgeShdlcDevice</span>
 
 <span class="kn">from</span> <span class="nn">sensirion_sensorbridge_i2c_sfm.sfm3019</span> <span class="kn">import</span> <span class="n">Sfm3019I2cSensorBridgeDevice</span><span class="p">,</span> <span class="n">MeasurementMode</span>
+<span class="kn">from</span> <span class="nn">sensirion_sensorbridge_i2c_sfm.sfm3019.sfm3019_constants</span> <span class="kn">import</span> <span class="n">SFM3019_DEFAULT_I2C_FREQUENCY</span><span class="p">,</span> \
+    <span class="n">SFM3019_DEFAULT_VOLTAGE</span>
 
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> [</span><span class="si">%(levelname)s</span><span class="s1">] </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">)</span>
 
@@ -185,8 +187,8 @@ installed with <code class="docutils literal notranslate"><span class="pre">pip<
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SensorBridge SN: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bridge</span><span class="o">.</span><span class="n">get_serial_number</span><span class="p">()))</span>
 
     <span class="c1"># Configure SensorBridge port 1 for SFM</span>
-    <span class="n">bridge</span><span class="o">.</span><span class="n">set_i2c_frequency</span><span class="p">(</span><span class="n">SensorBridgePort</span><span class="o">.</span><span class="n">ONE</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mf">400e3</span><span class="p">)</span>
-    <span class="n">bridge</span><span class="o">.</span><span class="n">set_supply_voltage</span><span class="p">(</span><span class="n">SensorBridgePort</span><span class="o">.</span><span class="n">ONE</span><span class="p">,</span> <span class="n">voltage</span><span class="o">=</span><span class="mf">3.3</span><span class="p">)</span>
+    <span class="n">bridge</span><span class="o">.</span><span class="n">set_i2c_frequency</span><span class="p">(</span><span class="n">SensorBridgePort</span><span class="o">.</span><span class="n">ONE</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="n">SFM3019_DEFAULT_I2C_FREQUENCY</span><span class="p">)</span>
+    <span class="n">bridge</span><span class="o">.</span><span class="n">set_supply_voltage</span><span class="p">(</span><span class="n">SensorBridgePort</span><span class="o">.</span><span class="n">ONE</span><span class="p">,</span> <span class="n">voltage</span><span class="o">=</span><span class="n">SFM3019_DEFAULT_VOLTAGE</span><span class="p">)</span>
     <span class="n">bridge</span><span class="o">.</span><span class="n">switch_supply_on</span><span class="p">(</span><span class="n">SensorBridgePort</span><span class="o">.</span><span class="n">ONE</span><span class="p">)</span>
 
     <span class="c1"># Create SFM device</span>

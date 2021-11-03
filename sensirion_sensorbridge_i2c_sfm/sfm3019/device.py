@@ -8,12 +8,12 @@ from .commands import Sfm3019I2cCmdReadMeas, \
     Sfm3019I2cCmdStartMeasAir, Sfm3019I2cCmdStartMeasAirO2Mix, \
     Sfm3019I2cCmdStartMeasO2, Sfm3019I2cCmdStopMeas, \
     Sfm3019I2cCmdGetUnitAndFactors
-from .sfm3019_constants import MeasurementMode, flow_unit_prefix, flow_unit, flow_time_base
+from .sfm3019_constants import MeasurementMode, FLOW_UNIT_PREFIX, FLOW_UNIT, FLOW_TIME_BASE
 
 
 class Sfm3019I2cSensorBridgeDevice:
     """
-    SFM3019 I²C device class to allow executing I²C commands via Sensirion's Sensorbridge.
+    SFM3019 I²C device class to allow executing I²C commands via Sensirion's SensorBridge.
     """
 
     MeasurementCmds = {
@@ -27,9 +27,9 @@ class Sfm3019I2cSensorBridgeDevice:
         Constructs a new SFM3019 I²C device.
 
         :param ~sensirion_shdlc_sensorbridge.device.SensorBridgeShdlcDevice sensor_bridge:
-            The I²C SHDLC Sensorbridge connection to use for communication.
+            The I²C SHDLC SensorBridge connection to use for communication.
         :param int sensor_bridge_port:
-            The port on the Sensorbridge which the sensor is connected to.
+            The port on the SensorBridge which the sensor is connected to.
         :param byte slave_address:
             The I²C slave address, defaults to 0x2E.
         """
@@ -92,9 +92,9 @@ class Sfm3019I2cSensorBridgeDevice:
         :return: The flow unit as a string according to datasheet
         :rtype: str
         """
-        unit = flow_unit[self._flow_unit >> 8 & 0xf]
-        time = flow_time_base[self._flow_unit >> 4 & 0xf]
-        prefix = flow_unit_prefix[self._flow_unit & 0xf]
+        unit = FLOW_UNIT[self._flow_unit >> 8 & 0xf]
+        time = FLOW_TIME_BASE[self._flow_unit >> 4 & 0xf]
+        prefix = FLOW_UNIT_PREFIX[self._flow_unit & 0xf]
 
         return "{}{}{}".format(prefix, unit, time)
 

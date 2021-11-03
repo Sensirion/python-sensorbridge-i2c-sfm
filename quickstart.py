@@ -5,6 +5,8 @@ from sensirion_shdlc_driver import ShdlcSerialPort, ShdlcConnection
 from sensirion_shdlc_sensorbridge import SensorBridgePort, SensorBridgeShdlcDevice
 
 from sensirion_sensorbridge_i2c_sfm.sfm3019 import Sfm3019I2cSensorBridgeDevice, MeasurementMode
+from sensirion_sensorbridge_i2c_sfm.sfm3019.sfm3019_constants import SFM3019_DEFAULT_I2C_FREQUENCY, \
+    SFM3019_DEFAULT_VOLTAGE
 
 logging.basicConfig(format='%(asctime)s [%(levelname)s] %(message)s', level=logging.ERROR)
 
@@ -17,8 +19,8 @@ with ShdlcSerialPort(port='/dev/ttyUSB0', baudrate=460800) as port:
     print("SensorBridge SN: {}".format(bridge.get_serial_number()))
 
     # Configure SensorBridge port 1 for SFM
-    bridge.set_i2c_frequency(SensorBridgePort.ONE, frequency=400e3)
-    bridge.set_supply_voltage(SensorBridgePort.ONE, voltage=3.3)
+    bridge.set_i2c_frequency(SensorBridgePort.ONE, frequency=SFM3019_DEFAULT_I2C_FREQUENCY)
+    bridge.set_supply_voltage(SensorBridgePort.ONE, voltage=SFM3019_DEFAULT_VOLTAGE)
     bridge.switch_supply_on(SensorBridgePort.ONE)
 
     # Create SFM device

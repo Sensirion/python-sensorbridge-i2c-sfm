@@ -7,32 +7,38 @@ class MeasurementMode(Enum):
     AirO2Mix = 2,
 
 
-flow_unit_prefix = {3: 'n',
-                    4: 'u',
-                    5: 'm',
-                    6: 'c',
-                    7: 'd',
-                    8: '',
-                    9: 'd',
-                    10: 'h',
-                    11: 'K',
-                    12: 'M',
-                    13: 'G',
-                    }
+SFM3019_DEFAULT_I2C_FREQUENCY = 400e3
+SFM3019_DEFAULT_VOLTAGE = 3.3
 
-flow_unit = {0: 'sl(0)',
-             1: 'sl(20)',
-             2: 'sl(15)',
-             3: 'sl(25)',
-             8: 'l',
-             9: 'g',
-             }
+FLOW_UNIT_PREFIX = {
+    3: 'n',
+    4: 'u',
+    5: 'm',
+    6: 'c',
+    7: 'd',
+    8: '',
+    9: 'd',
+    10: 'h',
+    11: 'K',
+    12: 'M',
+    13: 'G',
+}
 
-flow_time_base = {0: '',
-                  1: '/us',
-                  2: '/ms',
-                  3: '/s',
-                  4: '/min',
-                  5: '/h',
-                  6: '/d',
-                  }
+FLOW_UNIT = {
+    0: 'sl(0)',
+    1: 'sl(20)',
+    2: 'sl(15)',
+    3: 'sl(25)',
+    8: 'l',
+    9: 'g',
+}
+
+FLOW_TIME_BASE = {
+    0: '',
+    1: '/us',
+    2: '/ms',
+    3: '/s',
+    4: '/min',
+    5: '/h',
+    6: '/d',
+}
